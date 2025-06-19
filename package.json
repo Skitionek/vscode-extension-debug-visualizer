@@ -41,14 +41,14 @@
   "contributes": {
     "commands": [
       {
-        "command": "jsondbg.viewJson",
-        "title": "View as JSON"
+        "command": "visualize",
+        "title": "Visualize"
       }
     ],
     "menus": {
       "debug/variables/context": [
         {
-          "command": "jsondbg.viewJson",
+          "command": "visualize",
           "group": "navigation@1"
         }
       ]
