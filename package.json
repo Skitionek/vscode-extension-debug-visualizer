@@ -60,7 +60,7 @@
     "watch": "tsc -watch -p ./",
     "pretest": "npm run compile && npm run lint",
     "lint": "eslint src",
-    "test": "node ./out/test/runTest.js",
+    "test": "mocha --ui tdd \"out/test/**/*.test.js\"",
     "deploy": "vsce publish"
   },
   "devDependencies": {
