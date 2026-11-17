@@ -13,3 +13,4 @@ vsc-extension-quickstart.md
 **/src/test
 **/*.env
 **/.env*
+out/test/**

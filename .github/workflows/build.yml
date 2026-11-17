@@ -16,13 +16,7 @@ on:
       - '**/*.gitignore'
       - '**/*.gitattributes'
   workflow_dispatch:
-    branches:
-      - main
-    paths-ignore:
-      - '**/*.md'
-      - '**/*.gitignore'
-      - '**/*.gitattributes'
-      
+
 jobs:
   build:
     name: Build 
@@ -39,13 +33,13 @@ jobs:
         node-version: '20.x'  # Updated Node.js version
 
     - name: Install dependencies
-      run: npm install
+      run: npm ci
+
+    - name: Lint and test
+      run: npm test
 
     - name: Install vsce
       run: npm install -g @vscode/vsce
-
-    - name: Install cross-env
-      run: npm install -g cross-env
 
     - name: Package
       run: vsce package
@@ -68,6 +62,7 @@ jobs:
           **/*.vsix
 
     - name: 🏷️ Tag and Release
+      if: ${{ github.event_name == 'push' }}
       id: tag_release
       uses: softprops/action-gh-release@v0.1.15
       with:
